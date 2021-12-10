@@ -7,6 +7,10 @@ namespace numerals
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+
+            var numeral = new Numeral();
+
         }
     }
 }

@@ -7,11 +7,21 @@ namespace numerals
     public class Numeral
     {
         private string _romanRepresentation;
-        private int _deciamalRepresentation;
+        private int _arabicRepresentation;
 
         public Numeral()
         {
 
+        }
+
+        public Numeral(string roman)
+        {
+            this.Roman = roman;
+        }
+
+        public Numeral(int arabic)
+        {
+            this.Arabic = arabic;
         }
 
         public string Roman
@@ -23,16 +33,47 @@ namespace numerals
             set
             {
                 _romanRepresentation = value;
+                _arabicRepresentation = ConvertToDeciamal(value);
+            }
+        }
+
+        public int Arabic
+        {
+            get
+            {
+                return _arabicRepresentation;
+            }
+            set
+            {
+                _arabicRepresentation = value;
+                // TODO: write method to convert from arabic to deciamal
             }
         }
 
 
         private int ConvertToDeciamal(string roman)
         {
-
             int returnValue = 0;
-            int length = roman.Length;
+            int[] arabicNumerals = new int[roman.Length];
+            int arabicNumeralToRight = -1;
 
+            for ( int i = 0; i < arabicNumerals.Length; i++)
+            {
+                arabicNumerals[i] = GetValueFromRomanDigit(roman.Substring(i, 1)[0]);
+            }
+
+            for (int i = arabicNumerals.Length - 1; i >= 0; i--)
+            {
+                if (arabicNumerals[i] < arabicNumeralToRight)
+                {
+                    returnValue = returnValue - arabicNumerals[i];
+                }
+                else
+                {
+                    returnValue = returnValue + arabicNumerals[i];
+                }
+                arabicNumeralToRight = arabicNumerals[i];
+            }
 
             return returnValue;
         }
