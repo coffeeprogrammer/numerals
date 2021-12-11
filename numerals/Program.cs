@@ -8,9 +8,6 @@ namespace numerals
         {
             Console.WriteLine("Hello World!");
 
-
-            var numeral = new Numeral();
-
         }
     }
 }
