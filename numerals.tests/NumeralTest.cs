@@ -49,5 +49,16 @@ namespace numerals.tests
             Assert.AreEqual("CCXCVIII", numeral.Roman);
         }
 
+        [Test]
+        public void Add_LV_To_V()
+        {
+            var LV = new Numeral("LV");
+            var V = new Numeral("V");
+
+            var result = LV + V;
+
+            Assert.AreEqual(result.Arabic, 60);
+            Assert.AreEqual(result.Roman, "LX");
+        }
     }
 }

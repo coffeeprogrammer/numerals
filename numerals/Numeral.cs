@@ -45,6 +45,13 @@ namespace numerals
             }
         }
 
+        public static Numeral operator + (Numeral n1, Numeral n2)
+        {
+            Numeral returnObject = new Numeral();
+            returnObject.Arabic = n1.Arabic + n2.Arabic;
+            return returnObject;
+        }
+
         private int ConvertToArabic(string roman)
         {
             int returnValue = 0;
